@@ -1,15 +1,16 @@
----
-title: reqwehe Monospace Web
-subtitle: A minimalist design exploration
-author: Oskar Wickström
-author-url: "https://wickstrom.tech"
-lang: en
-toc-title: Contents
----
+# Command Stack
 
 ## Introduction
 
-Monospace fonts are dear to many of us. 
+There is a spectre haunting Europe today, the spectre of communism
+which is manifesting itself in the form of a monopoly of the
+Internet, a monopoly of the Web, and a monopoly of the
+monospaced font.
+But maybe we're just brainwashed from spending years in terminals?
+Or are we hopelessly nostalgic?
+I'm not sure.
+
+Monospace fonts are dear to many of us.
 Some find them more readable, consistent, and beautiful, than their proportional alternatives.
 Maybe we're just brainwashed from spending years in terminals?
 Or are we hopelessly nostalgic?
@@ -33,6 +34,7 @@ This document uses a few extra classes here and there, but mostly it's just mark
 This, for instance, is a regular paragraph.
 
 Look at this horizontal break:
+
 <hr>
 
 Lovely. We can hide stuff in the `<details`> element:
@@ -46,17 +48,17 @@ Lovely. We can hide stuff in the `<details`> element:
 
 This is a plain old bulleted list:
 
-* Banana
-* Paper boat
-* Cucumber
-* Rocket
+- Banana
+- Paper boat
+- Cucumber
+- Rocket
 
 Ordered lists look pretty much as you'd expect:
 
 1. Goals
 1. Motivations
-    1. Intrinsic
-    1. Extrinsic
+   1. Intrinsic
+   1. Extrinsic
 1. Second-order effects
 
 It's nice to visualize trees.
@@ -64,31 +66,31 @@ This is a regular unordered list with a `tree` class:
 
 <ul class="tree"><li><p style="margin: 0;"><strong>/dev/nvme0n1p2</strong></p>
 
-* usr                               
-    * local                         
-    * share                         
-    * libexec                       
-    * include                       
-    * sbin                          
-    * src                           
-    * lib64                         
-    * lib                           
-    * bin                           
-    * games                         
-        * solitaire
-        * snake
-        * tic-tac-toe
-    * media                         
-* media                             
-* run                               
-* tmp                               
+- usr
+  - local
+  - share
+  - libexec
+  - include
+  - sbin
+  - src
+  - lib64
+  - lib
+  - bin
+  - games
+    - solitaire
+    - snake
+    - tic-tac-toe
+  - media
+- media
+- run
+- tmp
 
 </li></ul>
 
 ## Tables
 
 We can use regular tables that automatically adjust to the monospace grid.
-They're responsive. 
+They're responsive.
 
 <table>
 <thead>
@@ -124,6 +126,7 @@ Here are some buttons:
 </nav>
 
 And inputs:
+
 ```
 <form class="grid">
 <label>First name <input type="text" placeholder="Placeholder..." /></label>
@@ -131,6 +134,7 @@ And inputs:
 <label>Age <input type="text" value="30" /></label>
 </form>
 ```
+
 And radio buttons:
 
 <form class="grid">
@@ -182,6 +186,7 @@ To have it stand out a bit more, we can wrap it in a `<figure>` tag, and why not
 │Actor 1│ │Actor 2│ │Actor 3│
 └───────┘ └───────┘ └───────┘
 ```
+
 Let's go wild and draw a chart!
 
 ```
@@ -205,15 +210,11 @@ Let's go wild and draw a chart!
     │   █         █         █          ░
  0  └───▀─────────▀─────────▀──────────▀─────────────
       Socks     Jeans     Shirts   USB Drives
-
 ```
+
 ## Media
 
 Media objects are supported, like images and video:
-
-![A room in an old French castle (2024)](castle.jpg)
-
-![[The Center of the Web (1914), Wikimedia](https://en.wikisource.org/wiki/Page:The_Center_of_the_Web_(1914).webm/11)](https://upload.wikimedia.org/wikipedia/commons/e/e0/The_Center_of_the_Web_%281914%29.webm)
 
 They extend to the width of the page, and add appropriate padding in the bottom to maintain the monospace grid.
 

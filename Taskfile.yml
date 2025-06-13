@@ -1,11 +1,11 @@
 # https://taskfile.dev
 
-version: '3'
+version: "3"
 
 vars:
   GREETING: Hello, World!
-  FILE: index
-
+  FILE: ./src/index.md
+interval: 500ms
 tasks:
   exit:
     cmds:
@@ -14,20 +14,19 @@ tasks:
   dev:
     watch: true
     cmds:
-      - cp header.html index.html
-      - cmark -t html {{.FILE}}.md >> index.html
-      # - task build
+      - cp ./src/header.html ./static/index.html
+      - cmark -t html {{.FILE}} >> ./static/index.html
     sources:
-      - ./index.md
+      - ./src/index.md
     generates:
-      - index.html
+      - ./static/index.html
   build:
-    watch: true
+    # watch: true
     cmds:
-      - cp header.html index.html
-      - cmark -t html {{.FILE}}.md >> index.html
+      - cp ./src/header.html ./static/index.html
+      - cmark --unsafe -t html {{.FILE}} >> ./static/index.html
     sources:
-      - ./index.md
+      - ./src/index.md
     generates:
       - index.html
   default:
