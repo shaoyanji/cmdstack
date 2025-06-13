@@ -1,0 +1,36 @@
+# https://taskfile.dev
+
+version: '3'
+
+vars:
+  GREETING: Hello, World!
+  FILE: index
+
+tasks:
+  exit:
+    cmds:
+      - exit
+    silent: true
+  dev:
+    watch: true
+    cmds:
+      - cp header.html index.html
+      - cmark -t html {{.FILE}}.md >> index.html
+      # - task build
+    sources:
+      - ./index.md
+    generates:
+      - index.html
+  build:
+    watch: true
+    cmds:
+      - cp header.html index.html
+      - cmark -t html {{.FILE}}.md >> index.html
+    sources:
+      - ./index.md
+    generates:
+      - index.html
+  default:
+    cmds:
+      - task $(cat Taskfile.yml | yq '.tasks | keys | .[]' | fzf --height 50% )
+    silent: true
