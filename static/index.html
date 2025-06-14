@@ -5,91 +5,70 @@
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<meta name="color-scheme" content="light dark">
-	<link rel="stylesheet" href="css/pico.min.css">
+	<script src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js" defer></script>
+	<script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/water.css@2/out/dark.min.css">
+	<!-- Google Fonts -->
+	<!-- <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300italic,700,700italic"> -->
+	<!-- CSS Reset -->
+	<!-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.css"> -->
+	<!-- Milligram CSS -->
+	<!-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/milligram/1.4.1/milligram.css"> -->
+	<!-- <link  rel="stylesheet"  href="https://cdn.jsdelivr.net/npm/@picocss/pico@2/css/pico.min.css"> -->
+	<!--  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sakura.css/css/sakura.css" type="text/css">-->
+	<!-- <script type="module" src="https://cdn.jsdelivr.net/gh/starfederation/datastar@1.0.0-beta.11/bundles/datastar.js"></script> -->
+	<!-- <link rel="stylesheet" href="css/pico.min.css"> -->
 </head>
-<h1>Command Stack</h1>
+<style>    @keyframes grid {        0% { transform: translateY(-50%); }        100% { transform: translateY(0); }    }    .animate-grid {        animation: grid 15s linear infinite;    }    .synthwave-grid {        background-repeat: repeat;        background-size: 60px 60px;        height: 300vh;        inset: 0% 0px;        margin-left: -50%;        transform-origin: 100% 0 0;        width: 600vw;    }    :not(.dark) .synthwave-grid-light {        background-image:             linear-gradient(to right, rgba(0,0,0,0.6) 1px, transparent 0),            linear-gradient(to bottom, rgba(0,0,0,0.6) 1px, transparent 0);    }    .dark .synthwave-grid-dark {        background-image:             linear-gradient(to right, rgba(255,255,255,0.4) 1px, transparent 0),            linear-gradient(to bottom, rgba(255,255,255,0.4) 1px, transparent 0);    }</style><div x-data="{ angle: 60 }" class="relative dark bg-gray-900 min-h-[420px] flex flex-col items-left justify-center w-full h-full overflow-hidden border-0" x-cloak>    <h1 class="absolute w-full h-auto text-5xl font-bold text-center text-white">
+<h1>Bountystash</h1>
+<p><strong>╭─14:01:24 | 14 Jun, Saturday | in -&gt; cmdstack</strong></p>
+<p><strong>╰─❯ nix build .#universe</strong></p>
+<p><em><strong>lrwxrwxrwx ... result -&gt; /nix/store/d18hyl92g30l...-universe-1.0.0</strong></em></p>
+</h1>        <div class="absolute inset-0 w-full h-full overflow-hidden opacity-50 pointer-events-none" style="perspective: 200px;">        <div class="absolute inset-0" :style="{ transform: `rotateX(${angle}deg)` }">            <div class="animate-grid synthwave-grid synthwave-grid-light synthwave-grid-dark"></div>        </div>        <div class="absolute bottom-0 left-0 w-full h-20 bg-gradient-to-t from-black to-transparent"></div>    </div></div>
+<!-- <img src="iApztC4tnMo4oTzOjyEs.jpg"> -->
+<!-- making a marquee-->
+<div class="flex flex-col w-full h-full">    <div x-data x-init="            $nextTick(() => {                $refs.content.appendChild($refs.item.cloneNode(true));            });        "         class="w-full overflow-hidden text-lg italic tracking-wide text-white uppercase bg-gray-900 sm:text-xs md:text-sm lg:text-base xl:text-xl"        >        <div class="relative w-full mx-auto overflow-hidden max-w-7xl">            <div class="absolute left-0 z-20 w-40 h-full bg-gradient-to-r from-gray-900 to-transparent"></div>            <div class="absolute right-0 z-20 w-40 h-full bg-gradient-to-l from-gray-900 to-transparent"></div>            <div x-ref="content" class="flex animate-marquee">                <div x-ref="item" class="flex items-center justify-center flex-shrink-0 w-full py-2 space-x-2 container-block-02">                    <div>
+    This is a
+<span class="hidden sm:inline">
+        Tailwind CSS and Alpine.js
+</span>
+    continuous marquee example
+</div>
+<div class="hidden sm:inline two">
+        It scrolls infinitely
+</div>
+<div class="hidden lg:inline three">
+        Without any gaps
+</div>                </div>            </div>        </div>    </div>    <div x-data x-init="            $nextTick(() => {                $refs.content.appendChild($refs.item.cloneNode(true));            });        "         class="w-full overflow-hidden text-lg italic tracking-wide text-white uppercase bg-gray-900 sm:text-xs md:text-sm lg:text-base xl:text-xl"        >        <div class="relative w-full mx-auto overflow-hidden max-w-7xl">            <div class="absolute left-0 z-20 w-40 h-full bg-gradient-to-r from-gray-900 to-transparent"></div>            <div class="absolute right-0 z-20 w-40 h-full bg-gradient-to-l from-gray-900 to-transparent"></div>            <div x-ref="content" class="flex animate-marquee-reverse">                <div x-ref="item" class="flex items-center justify-center flex-shrink-0 w-full py-2 space-x-2 container-block-02">                    <div>
+This is a
+<span class="hidden sm:inline">
+Tailwind CSS and Alpine.js
+</span>
+continuous marquee example
+</div>                    <div class="hidden sm:inline two">
+It scrolls infinitely
+</div>                    <div class="hidden lg:inline three">
+Without any gaps
+</div>                </div>            </div>        </div>    </div></div><style>    /*     *  This is the marquee animation styles.      *  Instead of adding this CSS you may wish to implement in your tailwind config.      *  Learn more in the marquee Tailwind Config section     */    @keyframes marquee {        0% {            transform: translateX(0);        }        100% {            transform: translateX(-100%);        }    }    @keyframes marquee-reverse {        0% {            transform: translateX(-100%);        }        100% {            transform: translateX(0);        }    }    .animate-marquee {        animation: marquee 20s linear infinite;    }    .animate-marquee-reverse {        animation: marquee-reverse 20s linear infinite;    }</style><style>    /*     *  This is a container query used for the demo that does not need to be included     */    .container-block-02 {        container-type: inline-size;    }    @container (max-width: 1100px) {        .container-block-02 *:nth-child(2),        .container-block-02 *:nth-child(3) {            display: none;        }    }        @container (max-width: 1100px) {        .container-block-02 > div{            font-size:12px !important;        }    }</style>
+<!-- ## Datastar Tutorial -->
+<!-- <input data-bind-title /><div data-text="$title.toUpperCase()"></div><button data-on-click="@post('/endpoint')">Save</button> -->
+<!-- ## AlpineJS -->
+<!-- <div x-data="{ open: false }">    <button @click="open = true">Expand</button>     <span x-show="open">        Content...    </span></div> -->
+<!-- ### Dropdown -->
+<!-- <div x-data="{ open: false }">    <button @click="open = ! open">Toggle</button>     <div x-show="open" @click.outside="open = false"> -->
+<!-- ## Does markdown -->
+<!-- **work inside unsafe?** -->
+<!-- </div></div> -->
+<h3>Active Search</h3>
+<div    x-data="{        search: '',         items: ['foo', 'bar', 'baz'],         get filteredItems() {            return this.items.filter(                i => i.startsWith(this.search)            )        }    }">    <input x-model="search" placeholder="Search...">     <ul>        <template x-for="item in filteredItems" :key="item">            <li x-text="item"></li>        </template>    </ul></div>
+<!-- ## [PinesUI](https://devdojo.com/pines/) -->
+<!-- ### -->
 <h2>Introduction</h2>
 <p>There is a spectre haunting Europe today, the spectre of communism
 which is manifesting itself in the form of a monopoly of the
 Internet, a monopoly of the Web, and a monopoly of the
-monospaced font.
-But maybe we're just brainwashed from spending years in terminals?
-Or are we hopelessly nostalgic?
-I'm not sure.</p>
-<p>Monospace fonts are dear to many of us.
-Some find them more readable, consistent, and beautiful, than their proportional alternatives.
-Maybe we're just brainwashed from spending years in terminals?
-Or are we hopelessly nostalgic?
-I'm not sure.
-But I like them, and that's why I started experimenting with all-monospace Web.</p>
-<p>On this page, I use a monospace grid to align text and draw diagrams.
-It's generated from a simple Markdown document (using Pandoc), and the CSS and a tiny bit of Javascript renders it on the grid.
-The page is responsive, shrinking in character-sized steps.
-Standard elements should <em>just work</em>, at least that's the goal.
-It's semantic HTML, rendered as if we were back in the 70s.</p>
-<p>All right, but is this even a good idea?
-It's a technical and creative challenge and I like the aestethic.
-If you'd like to use it, feel free to fork or copy the bits you need, respecting the license.
-I might update it over time with improvements and support for more standard elements.</p>
-<h2>The Basics</h2>
-<p>This document uses a few extra classes here and there, but mostly it's just markup.
-This, for instance, is a regular paragraph.</p>
-<p>Look at this horizontal break:</p>
+monospaced font.</p>
 <hr>
-<p>Lovely. We can hide stuff in the <code>&lt;details</code>&gt; element:</p>
-<details>
-<summary>A short summary of the contents</summary>
-<p>Hidden gems.</p>
-</details>
-<h2>Lists</h2>
-<p>This is a plain old bulleted list:</p>
-<ul>
-<li>Banana</li>
-<li>Paper boat</li>
-<li>Cucumber</li>
-<li>Rocket</li>
-</ul>
-<p>Ordered lists look pretty much as you'd expect:</p>
-<ol>
-<li>Goals</li>
-<li>Motivations
-<ol>
-<li>Intrinsic</li>
-<li>Extrinsic</li>
-</ol>
-</li>
-<li>Second-order effects</li>
-</ol>
-<p>It's nice to visualize trees.
-This is a regular unordered list with a <code>tree</code> class:</p>
-<ul class="tree"><li><p style="margin: 0;"><strong>/dev/nvme0n1p2</strong></p>
-<ul>
-<li>usr
-<ul>
-<li>local</li>
-<li>share</li>
-<li>libexec</li>
-<li>include</li>
-<li>sbin</li>
-<li>src</li>
-<li>lib64</li>
-<li>lib</li>
-<li>bin</li>
-<li>games
-<ul>
-<li>solitaire</li>
-<li>snake</li>
-<li>tic-tac-toe</li>
-</ul>
-</li>
-<li>media</li>
-</ul>
-</li>
-<li>media</li>
-<li>run</li>
-<li>tmp</li>
-</ul>
-</li></ul>
 <h2>Tables</h2>
 <p>We can use regular tables that automatically adjust to the monospace grid.
 They're responsive.</p>
@@ -112,6 +91,11 @@ They're responsive.</p>
     <td>215.25m &times; 215.25m &times; 136.4m</td>
     <td>29°58'34"N 31°07'51"E</td>
   </tr>
+<tr>
+    <td>12Pyramid of Khafre</td>
+    <td>215.25m &times; 215.25m &times; 136.4m</td>
+    <td>29°58'34"N 31°07'51"E</td>
+  </tr>
 </tbody>
 </table>
 <p>Note that only one column is allowed to grow.</p>
@@ -122,37 +106,21 @@ They're responsive.</p>
     <button>Save</button>
 </nav>
 <p>And inputs:</p>
-<pre><code>&lt;form class=&quot;grid&quot;&gt;
-&lt;label&gt;First name &lt;input type=&quot;text&quot; placeholder=&quot;Placeholder...&quot; /&gt;&lt;/label&gt;
-&lt;label&gt;Last name &lt;input type=&quot;text&quot; placeholder=&quot;Text goes here...&quot; /&gt;&lt;/label&gt;
-&lt;label&gt;Age &lt;input type=&quot;text&quot; value=&quot;30&quot; /&gt;&lt;/label&gt;
-&lt;/form&gt;
-</code></pre>
+<form class="grid">
+<label>First name <input type="text" placeholder="Placeholder..." /></label>
+<label>Last name <input type="text" placeholder="Text goes here..." /></label>
+<label>Age <input type="text" value="30" /></label>
+</form>
 <p>And radio buttons:</p>
 <form class="grid">
 <label><input name="radio" type="radio" /> Option #1</label>
 <label><input name="radio" type="radio" /> Option #2</label>
 <label><input name="radio" type="radio" /> Option #3</label>
 </form>
-<h2>Grids</h2>
-<p>Add the <code>grid</code> class to a container to divide up the horizontal space evenly for the cells.
-Note that it maintains the monospace, so the total width might not be 100%.
-Here are six grids with increasing cell count:</p>
-<div class="grid"><input readonly value="1" /></div>
-<div class="grid"><input readonly value="1" /><input readonly value="2" /></div>
-<div class="grid"><input readonly value="1" /><input readonly value="2" /><input readonly value="3" /></div>
-<div class="grid"><input readonly value="1" /><input readonly value="2" /><input readonly value="3" /><input readonly value="4" /></div>
-<div class="grid"><input readonly value="1" /><input readonly value="2" /><input readonly value="3" /><input readonly value="4" /><input readonly value="5" /></div>
-<div class="grid"><input readonly value="1" /><input readonly value="2" /><input readonly value="3" /><input readonly value="4" /><input readonly value="5" /><input readonly value="6" /></div>
-<p>If we want one cell to fill the remainder, we set <code>flex-grow: 1;</code> for that particular cell.</p>
-<div class="grid"><input readonly value="1" /><input readonly value="2" /><input readonly value="3!" style="flex-grow: 1;" /><input readonly value="4" /><input readonly value="5" /><input readonly value="6" /></div>
-<h2>ASCII Drawings</h2>
-<p>We can draw in <code>&lt;pre&gt;</code> tags using <a href="https://en.wikipedia.org/wiki/Box-drawing_characters">box-drawing characters</a>:</p>
 <pre><code>╭─────────────────╮
 │ MONOSPACE ROCKS │
 ╰─────────────────╯
 </code></pre>
-<p>To have it stand out a bit more, we can wrap it in a <code>&lt;figure&gt;</code> tag, and why not also add a <code>&lt;figcaption&gt;</code>.</p>
 <pre><code>┌───────┐ ┌───────┐ ┌───────┐
 │Actor 1│ │Actor 2│ │Actor 3│
 └───┬───┘ └───┬───┘ └───┬───┘
@@ -188,12 +156,3 @@ Here are six grids with increasing cell count:</p>
  0  └───▀─────────▀─────────▀──────────▀─────────────
       Socks     Jeans     Shirts   USB Drives
 </code></pre>
-<h2>Media</h2>
-<p>Media objects are supported, like images and video:</p>
-<p>They extend to the width of the page, and add appropriate padding in the bottom to maintain the monospace grid.</p>
-<h2>Discussion</h2>
-<p>That's it for now.
-I've very much enjoyed making this, pushing my CSS chops and having a lot of fun with the design.
-If you like it or even decide to use it, please <a href="https://x.com/owickstrom">let me know</a>.</p>
-<p>The full source code is here: <a href="https://github.com/owickstrom/the-monospace-web">github.com/owickstrom/the-monospace-web</a></p>
-<p>Finally, a massive shout-out to <a href="https://x.com/usgraphics">U.S. Graphics Company</a> for all the inspiration.</p>

@@ -1,4 +1,64 @@
-# Command Stack
+<style>    @keyframes grid {        0% { transform: translateY(-50%); }        100% { transform: translateY(0); }    }    .animate-grid {        animation: grid 15s linear infinite;    }    .synthwave-grid {        background-repeat: repeat;        background-size: 60px 60px;        height: 300vh;        inset: 0% 0px;        margin-left: -50%;        transform-origin: 100% 0 0;        width: 600vw;    }    :not(.dark) .synthwave-grid-light {        background-image:             linear-gradient(to right, rgba(0,0,0,0.6) 1px, transparent 0),            linear-gradient(to bottom, rgba(0,0,0,0.6) 1px, transparent 0);    }    .dark .synthwave-grid-dark {        background-image:             linear-gradient(to right, rgba(255,255,255,0.4) 1px, transparent 0),            linear-gradient(to bottom, rgba(255,255,255,0.4) 1px, transparent 0);    }</style><div x-data="{ angle: 60 }" class="relative dark bg-gray-900 min-h-[420px] flex flex-col items-left justify-center w-full h-full overflow-hidden border-0" x-cloak>    <h1 class="absolute w-full h-auto text-5xl font-bold text-center text-white">
+
+# Bountystash
+
+**╭─14:01:24 | 14 Jun, Saturday | in ─❯ cmdstack**
+
+**╰─❯ nix build .#universe**
+
+_**lrwxrwxrwx ... result -> /nix/store/d18hyl92g30l...-universe-1.0.0**_
+
+</h1>        <div class="absolute inset-0 w-full h-full overflow-hidden opacity-50 pointer-events-none" style="perspective: 200px;">        <div class="absolute inset-0" :style="{ transform: `rotateX(${angle}deg)` }">            <div class="animate-grid synthwave-grid synthwave-grid-light synthwave-grid-dark"></div>        </div>        <div class="absolute bottom-0 left-0 w-full h-20 bg-gradient-to-t from-black to-transparent"></div>    </div></div>
+<!-- <img src="iApztC4tnMo4oTzOjyEs.jpg"> -->
+<!-- making a marquee-->
+<div class="flex flex-col w-full h-full">    <div x-data x-init="            $nextTick(() => {                $refs.content.appendChild($refs.item.cloneNode(true));            });        "         class="w-full overflow-hidden text-lg italic tracking-wide text-white uppercase bg-gray-900 sm:text-xs md:text-sm lg:text-base xl:text-xl"        >        <div class="relative w-full mx-auto overflow-hidden max-w-7xl">            <div class="absolute left-0 z-20 w-40 h-full bg-gradient-to-r from-gray-900 to-transparent"></div>            <div class="absolute right-0 z-20 w-40 h-full bg-gradient-to-l from-gray-900 to-transparent"></div>            <div x-ref="content" class="flex animate-marquee">                <div x-ref="item" class="flex items-center justify-center flex-shrink-0 w-full py-2 space-x-2 container-block-02">                    <div>
+    This is a
+<span class="hidden sm:inline">
+        Tailwind CSS and Alpine.js
+</span>
+    continuous marquee example
+</div>
+<div class="hidden sm:inline two">
+        It scrolls infinitely
+</div>
+<div class="hidden lg:inline three">
+        Without any gaps
+</div>                </div>            </div>        </div>    </div>    <div x-data x-init="            $nextTick(() => {                $refs.content.appendChild($refs.item.cloneNode(true));            });        "         class="w-full overflow-hidden text-lg italic tracking-wide text-white uppercase bg-gray-900 sm:text-xs md:text-sm lg:text-base xl:text-xl"        >        <div class="relative w-full mx-auto overflow-hidden max-w-7xl">            <div class="absolute left-0 z-20 w-40 h-full bg-gradient-to-r from-gray-900 to-transparent"></div>            <div class="absolute right-0 z-20 w-40 h-full bg-gradient-to-l from-gray-900 to-transparent"></div>            <div x-ref="content" class="flex animate-marquee-reverse">                <div x-ref="item" class="flex items-center justify-center flex-shrink-0 w-full py-2 space-x-2 container-block-02">                    <div>
+This is a
+<span class="hidden sm:inline">
+Tailwind CSS and Alpine.js
+</span>
+continuous marquee example
+</div>                    <div class="hidden sm:inline two">
+It scrolls infinitely
+</div>                    <div class="hidden lg:inline three">
+Without any gaps
+</div>                </div>            </div>        </div>    </div></div><style>    /*     *  This is the marquee animation styles.      *  Instead of adding this CSS you may wish to implement in your tailwind config.      *  Learn more in the marquee Tailwind Config section     */    @keyframes marquee {        0% {            transform: translateX(0);        }        100% {            transform: translateX(-100%);        }    }    @keyframes marquee-reverse {        0% {            transform: translateX(-100%);        }        100% {            transform: translateX(0);        }    }    .animate-marquee {        animation: marquee 20s linear infinite;    }    .animate-marquee-reverse {        animation: marquee-reverse 20s linear infinite;    }</style><style>    /*     *  This is a container query used for the demo that does not need to be included     */    .container-block-02 {        container-type: inline-size;    }    @container (max-width: 1100px) {        .container-block-02 *:nth-child(2),        .container-block-02 *:nth-child(3) {            display: none;        }    }        @container (max-width: 1100px) {        .container-block-02 > div{            font-size:12px !important;        }    }</style>
+<!-- ## Datastar Tutorial -->
+
+<!-- <input data-bind-title /><div data-text="$title.toUpperCase()"></div><button data-on-click="@post('/endpoint')">Save</button> -->
+
+<!-- ## AlpineJS -->
+
+<!-- <div x-data="{ open: false }">    <button @click="open = true">Expand</button>     <span x-show="open">        Content...    </span></div> -->
+
+<!-- ### Dropdown -->
+
+<!-- <div x-data="{ open: false }">    <button @click="open = ! open">Toggle</button>     <div x-show="open" @click.outside="open = false"> -->
+
+<!-- ## Does markdown -->
+
+<!-- **work inside unsafe?** -->
+
+<!-- </div></div> -->
+
+### Active Search
+
+<div    x-data="{        search: '',         items: ['foo', 'bar', 'baz'],         get filteredItems() {            return this.items.filter(                i => i.startsWith(this.search)            )        }    }">    <input x-model="search" placeholder="Search...">     <ul>        <template x-for="item in filteredItems" :key="item">            <li x-text="item"></li>        </template>    </ul></div>
+
+<!-- ## [PinesUI](https://devdojo.com/pines/) -->
+
+<!-- ### -->
 
 ## Introduction
 
@@ -6,86 +66,8 @@ There is a spectre haunting Europe today, the spectre of communism
 which is manifesting itself in the form of a monopoly of the
 Internet, a monopoly of the Web, and a monopoly of the
 monospaced font.
-But maybe we're just brainwashed from spending years in terminals?
-Or are we hopelessly nostalgic?
-I'm not sure.
-
-Monospace fonts are dear to many of us.
-Some find them more readable, consistent, and beautiful, than their proportional alternatives.
-Maybe we're just brainwashed from spending years in terminals?
-Or are we hopelessly nostalgic?
-I'm not sure.
-But I like them, and that's why I started experimenting with all-monospace Web.
-
-On this page, I use a monospace grid to align text and draw diagrams.
-It's generated from a simple Markdown document (using Pandoc), and the CSS and a tiny bit of Javascript renders it on the grid.
-The page is responsive, shrinking in character-sized steps.
-Standard elements should _just work_, at least that's the goal.
-It's semantic HTML, rendered as if we were back in the 70s.
-
-All right, but is this even a good idea?
-It's a technical and creative challenge and I like the aestethic.
-If you'd like to use it, feel free to fork or copy the bits you need, respecting the license.
-I might update it over time with improvements and support for more standard elements.
-
-## The Basics
-
-This document uses a few extra classes here and there, but mostly it's just markup.
-This, for instance, is a regular paragraph.
-
-Look at this horizontal break:
 
 <hr>
-
-Lovely. We can hide stuff in the `<details`> element:
-
-<details>
-<summary>A short summary of the contents</summary>
-<p>Hidden gems.</p>
-</details>
-
-## Lists
-
-This is a plain old bulleted list:
-
-- Banana
-- Paper boat
-- Cucumber
-- Rocket
-
-Ordered lists look pretty much as you'd expect:
-
-1. Goals
-1. Motivations
-   1. Intrinsic
-   1. Extrinsic
-1. Second-order effects
-
-It's nice to visualize trees.
-This is a regular unordered list with a `tree` class:
-
-<ul class="tree"><li><p style="margin: 0;"><strong>/dev/nvme0n1p2</strong></p>
-
-- usr
-  - local
-  - share
-  - libexec
-  - include
-  - sbin
-  - src
-  - lib64
-  - lib
-  - bin
-  - games
-    - solitaire
-    - snake
-    - tic-tac-toe
-  - media
-- media
-- run
-- tmp
-
-</li></ul>
 
 ## Tables
 
@@ -111,6 +93,11 @@ They're responsive.
     <td>215.25m &times; 215.25m &times; 136.4m</td>
     <td>29°58'34"N 31°07'51"E</td>
   </tr>
+<tr>
+    <td>Pyramid of Khafre</td>
+    <td>215.25m &times; 215.25m &times; 136.4m</td>
+    <td>29°58'34"N 31°07'51"E</td>
+  </tr>
 </tbody>
 </table>
 
@@ -127,13 +114,11 @@ Here are some buttons:
 
 And inputs:
 
-```
 <form class="grid">
 <label>First name <input type="text" placeholder="Placeholder..." /></label>
 <label>Last name <input type="text" placeholder="Text goes here..." /></label>
 <label>Age <input type="text" value="30" /></label>
 </form>
-```
 
 And radio buttons:
 
@@ -143,34 +128,11 @@ And radio buttons:
 <label><input name="radio" type="radio" /> Option #3</label>
 </form>
 
-## Grids
-
-Add the `grid` class to a container to divide up the horizontal space evenly for the cells.
-Note that it maintains the monospace, so the total width might not be 100%.
-Here are six grids with increasing cell count:
-
-<div class="grid"><input readonly value="1" /></div>
-<div class="grid"><input readonly value="1" /><input readonly value="2" /></div>
-<div class="grid"><input readonly value="1" /><input readonly value="2" /><input readonly value="3" /></div>
-<div class="grid"><input readonly value="1" /><input readonly value="2" /><input readonly value="3" /><input readonly value="4" /></div>
-<div class="grid"><input readonly value="1" /><input readonly value="2" /><input readonly value="3" /><input readonly value="4" /><input readonly value="5" /></div>
-<div class="grid"><input readonly value="1" /><input readonly value="2" /><input readonly value="3" /><input readonly value="4" /><input readonly value="5" /><input readonly value="6" /></div>
-
-If we want one cell to fill the remainder, we set `flex-grow: 1;` for that particular cell.
-
-<div class="grid"><input readonly value="1" /><input readonly value="2" /><input readonly value="3!" style="flex-grow: 1;" /><input readonly value="4" /><input readonly value="5" /><input readonly value="6" /></div>
-
-## ASCII Drawings
-
-We can draw in `<pre>` tags using [box-drawing characters](https://en.wikipedia.org/wiki/Box-drawing_characters):
-
 ```
 ╭─────────────────╮
 │ MONOSPACE ROCKS │
 ╰─────────────────╯
 ```
-
-To have it stand out a bit more, we can wrap it in a `<figure>` tag, and why not also add a `<figcaption>`.
 
 ```
 ┌───────┐ ┌───────┐ ┌───────┐
@@ -211,19 +173,3 @@ Let's go wild and draw a chart!
  0  └───▀─────────▀─────────▀──────────▀─────────────
       Socks     Jeans     Shirts   USB Drives
 ```
-
-## Media
-
-Media objects are supported, like images and video:
-
-They extend to the width of the page, and add appropriate padding in the bottom to maintain the monospace grid.
-
-## Discussion
-
-That's it for now.
-I've very much enjoyed making this, pushing my CSS chops and having a lot of fun with the design.
-If you like it or even decide to use it, please [let me know](https://x.com/owickstrom).
-
-The full source code is here: [github.com/owickstrom/the-monospace-web](https://github.com/owickstrom/the-monospace-web)
-
-Finally, a massive shout-out to [U.S. Graphics Company](https://x.com/usgraphics) for all the inspiration.
