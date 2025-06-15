@@ -14,15 +14,15 @@ tasks:
     silent: true
   build:
     cmds:
-      - cp ./src/header.html ./static/index.html
-      - echo "<title>$(cat src/index.md | grep '^# ' | awk '{print $2}')</title>" >> ./static/index.html
-      - echo "</head><body><container>" >> ./static/index.html
-      - cmark --unsafe -t html {{.FILE}} >> ./static/index.html
-      - echo "</container></body></html>" >> ./static/index.html
+      - cp ./src/header.html {{.OUTPUT}}
+      - echo "<title>$(cat src/index.md | grep '^# ' | awk '{print $2}')</title>" >> ./index.html
+      - echo "</head><body><container>" >> ./index.html
+      - cmark --unsafe -t html {{.FILE}} >> ./index.html
+      - echo "</container></body></html>" >> ./index.html
     sources:
       - ./src/index.md
     generates:
-      - ./static/index.html
+      - ./index.html
   dev:
     watch: true
     cmds:
@@ -30,7 +30,7 @@ tasks:
     sources:
       - ./src/index.md
     generates:
-      - ./static/index.html
+      - ./index.html
   default:
     cmds:
       - task $(cat Taskfile.yml | yq '.tasks | keys | .[]' | fzf --height 50% )
