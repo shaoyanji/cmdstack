@@ -5,30 +5,32 @@ version: "3"
 vars:
   GREETING: Hello, World!
   FILE: ./src/index.md
+  OUTPUT: ./static/index.html
 interval: 500ms
 tasks:
   exit:
     cmds:
       - exit
     silent: true
-  dev:
-    watch: true
+  build:
     cmds:
       - cp ./src/header.html ./static/index.html
-      - cmark -t html {{.FILE}} >> ./static/index.html
+      - echo "<title>$(cat src/index.md | grep '^# ' | awk '{print $2}')</title>" >> ./static/index.html
+      - echo "</head><body><container>" >> ./static/index.html
+      - cmark --unsafe -t html {{.FILE}} >> ./static/index.html
+      - echo "</container></body></html>" >> ./static/index.html
     sources:
       - ./src/index.md
     generates:
       - ./static/index.html
-  build:
-    # watch: true
+  dev:
+    watch: true
     cmds:
-      - cp ./src/header.html ./static/index.html
-      - cmark --unsafe -t html {{.FILE}} >> ./static/index.html
+      - task build
     sources:
       - ./src/index.md
     generates:
-      - index.html
+      - ./static/index.html
   default:
     cmds:
       - task $(cat Taskfile.yml | yq '.tasks | keys | .[]' | fzf --height 50% )

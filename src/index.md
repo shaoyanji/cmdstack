@@ -1,75 +1,20 @@
-<style>    @keyframes grid {        0% { transform: translateY(-50%); }        100% { transform: translateY(0); }    }    .animate-grid {        animation: grid 15s linear infinite;    }    .synthwave-grid {        background-repeat: repeat;        background-size: 60px 60px;        height: 300vh;        inset: 0% 0px;        margin-left: -50%;        transform-origin: 100% 0 0;        width: 600vw;    }    :not(.dark) .synthwave-grid-light {        background-image:             linear-gradient(to right, rgba(0,0,0,0.6) 1px, transparent 0),            linear-gradient(to bottom, rgba(0,0,0,0.6) 1px, transparent 0);    }    .dark .synthwave-grid-dark {        background-image:             linear-gradient(to right, rgba(255,255,255,0.4) 1px, transparent 0),            linear-gradient(to bottom, rgba(255,255,255,0.4) 1px, transparent 0);    }</style><div x-data="{ angle: 60 }" class="relative dark bg-gray-900 min-h-[420px] flex flex-col items-left justify-center w-full h-full overflow-hidden border-0" x-cloak>    <h1 class="absolute w-full h-auto text-5xl font-bold text-center text-white">
-
 # Bountystash
-
-**╭─14:01:24 | 14 Jun, Saturday | in ─❯ cmdstack**
-
-**╰─❯ nix build .#universe**
-
-_**lrwxrwxrwx ... result -> /nix/store/d18hyl92g30l...-universe-1.0.0**_
-
-</h1>        <div class="absolute inset-0 w-full h-full overflow-hidden opacity-50 pointer-events-none" style="perspective: 200px;">        <div class="absolute inset-0" :style="{ transform: `rotateX(${angle}deg)` }">            <div class="animate-grid synthwave-grid synthwave-grid-light synthwave-grid-dark"></div>        </div>        <div class="absolute bottom-0 left-0 w-full h-20 bg-gradient-to-t from-black to-transparent"></div>    </div></div>
-<!-- <img src="iApztC4tnMo4oTzOjyEs.jpg"> -->
-<!-- making a marquee-->
-<div class="flex flex-col w-full h-full">    <div x-data x-init="            $nextTick(() => {                $refs.content.appendChild($refs.item.cloneNode(true));            });        "         class="w-full overflow-hidden text-lg italic tracking-wide text-white uppercase bg-gray-900 sm:text-xs md:text-sm lg:text-base xl:text-xl"        >        <div class="relative w-full mx-auto overflow-hidden max-w-7xl">            <div class="absolute left-0 z-20 w-40 h-full bg-gradient-to-r from-gray-900 to-transparent"></div>            <div class="absolute right-0 z-20 w-40 h-full bg-gradient-to-l from-gray-900 to-transparent"></div>            <div x-ref="content" class="flex animate-marquee">                <div x-ref="item" class="flex items-center justify-center flex-shrink-0 w-full py-2 space-x-2 container-block-02">                    <div>
-    This is a
-<span class="hidden sm:inline">
-        Tailwind CSS and Alpine.js
-</span>
-    continuous marquee example
-</div>
-<div class="hidden sm:inline two">
-        It scrolls infinitely
-</div>
-<div class="hidden lg:inline three">
-        Without any gaps
-</div>                </div>            </div>        </div>    </div>    <div x-data x-init="            $nextTick(() => {                $refs.content.appendChild($refs.item.cloneNode(true));            });        "         class="w-full overflow-hidden text-lg italic tracking-wide text-white uppercase bg-gray-900 sm:text-xs md:text-sm lg:text-base xl:text-xl"        >        <div class="relative w-full mx-auto overflow-hidden max-w-7xl">            <div class="absolute left-0 z-20 w-40 h-full bg-gradient-to-r from-gray-900 to-transparent"></div>            <div class="absolute right-0 z-20 w-40 h-full bg-gradient-to-l from-gray-900 to-transparent"></div>            <div x-ref="content" class="flex animate-marquee-reverse">                <div x-ref="item" class="flex items-center justify-center flex-shrink-0 w-full py-2 space-x-2 container-block-02">                    <div>
-This is a
-<span class="hidden sm:inline">
-Tailwind CSS and Alpine.js
-</span>
-continuous marquee example
-</div>                    <div class="hidden sm:inline two">
-It scrolls infinitely
-</div>                    <div class="hidden lg:inline three">
-Without any gaps
-</div>                </div>            </div>        </div>    </div></div><style>    /*     *  This is the marquee animation styles.      *  Instead of adding this CSS you may wish to implement in your tailwind config.      *  Learn more in the marquee Tailwind Config section     */    @keyframes marquee {        0% {            transform: translateX(0);        }        100% {            transform: translateX(-100%);        }    }    @keyframes marquee-reverse {        0% {            transform: translateX(-100%);        }        100% {            transform: translateX(0);        }    }    .animate-marquee {        animation: marquee 20s linear infinite;    }    .animate-marquee-reverse {        animation: marquee-reverse 20s linear infinite;    }</style><style>    /*     *  This is a container query used for the demo that does not need to be included     */    .container-block-02 {        container-type: inline-size;    }    @container (max-width: 1100px) {        .container-block-02 *:nth-child(2),        .container-block-02 *:nth-child(3) {            display: none;        }    }        @container (max-width: 1100px) {        .container-block-02 > div{            font-size:12px !important;        }    }</style>
-<!-- ## Datastar Tutorial -->
-
-<!-- <input data-bind-title /><div data-text="$title.toUpperCase()"></div><button data-on-click="@post('/endpoint')">Save</button> -->
-
-<!-- ## AlpineJS -->
-
-<!-- <div x-data="{ open: false }">    <button @click="open = true">Expand</button>     <span x-show="open">        Content...    </span></div> -->
-
-<!-- ### Dropdown -->
-
-<!-- <div x-data="{ open: false }">    <button @click="open = ! open">Toggle</button>     <div x-show="open" @click.outside="open = false"> -->
-
-<!-- ## Does markdown -->
-
-<!-- **work inside unsafe?** -->
-
-<!-- </div></div> -->
-
-### Active Search
-
-<div    x-data="{        search: '',         items: ['foo', 'bar', 'baz'],         get filteredItems() {            return this.items.filter(                i => i.startsWith(this.search)            )        }    }">    <input x-model="search" placeholder="Search...">     <ul>        <template x-for="item in filteredItems" :key="item">            <li x-text="item"></li>        </template>    </ul></div>
-
-<!-- ## [PinesUI](https://devdojo.com/pines/) -->
-
-<!-- ### -->
 
 ## Introduction
 
 There is a spectre haunting Europe today, the spectre of communism
 which is manifesting itself in the form of a monopoly of the
 Internet, a monopoly of the Web, and a monopoly of the
-monospaced font.
+monospaced font. [2](../static/index.html#Tables)
 
 <hr>
 
 ## Tables
+
+| table | header1 | header2    |
+| ----- | ------- | ---------- |
+| row1  | row2    | row3       |
+| this  | might   | not render |
 
 We can use regular tables that automatically adjust to the monospace grid.
 They're responsive.
@@ -173,3 +118,9 @@ Let's go wild and draw a chart!
  0  └───▀─────────▀─────────▀──────────▀─────────────
       Socks     Jeans     Shirts   USB Drives
 ```
+
+[^2]: Footnotes with multiple paragraphs Are indented in twice, and have line breaks between. - Markdown lists - work like this in footnotes - as well
+
+1. numbers make
+2. a list with
+3. numbers
