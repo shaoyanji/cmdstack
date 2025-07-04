@@ -44,6 +44,7 @@ clear advantages of a simple stack. content that is generated from AI still need
 
 ### Nice to haves
 
+- [subfolder-gh](https://gist.github.com/cobyism/4730490?permalink_comment_id=3929519) possibly even do a rotation with the push script
 - [nix](https://nixos.org)
 - [tgpt]():
 - [awk]():
