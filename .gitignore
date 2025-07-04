@@ -1,3 +1,4 @@
 .task
 .direnv
 src/components
+static/css
