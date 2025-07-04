@@ -33,7 +33,7 @@ tasks:
       - '{{.OUTPUT}}'
   deploy:
     cmds:
-      - git push origin :gh-pages && git subtree push --prefix static origin gh-pages
+      - git subtree push --prefix static origin gh-pages
   default:
     cmds:
       - task $(cat Taskfile.yml | yq '.tasks | keys | .[]' | fzf --height 50% )
