@@ -15,14 +15,14 @@ tasks:
   build:
     cmds:
       - cp ./src/header.html {{.OUTPUT}}
-      - echo "<title>$(cat src/index.md | grep '^# ' | awk '{print $2}')</title>" >> ./index.html
-      - echo "</head><body><container>" >> ./index.html
-      - cmark --unsafe -t html {{.FILE}} >> ./index.html
-      - echo "</container></body></html>" >> ./index.html
+      - echo "<title>$(cat src/index.md | grep '^# ' | awk '{print $2}')</title>" >> {{.OUTPUT}}
+      - echo "</head><body><container>" >> {{.OUTPUT}}
+      - cmark --unsafe -t html {{.FILE}} >> {{.OUTPUT}}
+      - echo "</container></body></html>" >> {{.OUTPUT}}
     sources:
       - ./src/index.md
     generates:
-      - ./index.html
+      - '{{.OUTPUT}}'
   dev:
     watch: true
     cmds:
@@ -30,7 +30,7 @@ tasks:
     sources:
       - ./src/index.md
     generates:
-      - ./index.html
+      - '{{.OUTPUT}}'
   default:
     cmds:
       - task $(cat Taskfile.yml | yq '.tasks | keys | .[]' | fzf --height 50% )

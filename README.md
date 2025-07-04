@@ -37,6 +37,7 @@ clear advantages of a simple stack. content that is generated from AI still need
 - [envs](https://envs.sh): a neat little open source "host" of assets like images and even full webpages
 - [curl](https://github.com/curl/curl): utility to post content to envs.sh
 - [DrivetoWeb](https://www.drv.tw/): Neat way to turn spare storage in cloud drives into website and a neat way to share content
+  [neocities](https://neocities.com): API CI/CD push
   ```
   curl -F'file=@yourfile.png' https://envs.sh
   ```

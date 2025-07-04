@@ -5,7 +5,7 @@
 There is a spectre haunting Europe today, the spectre of communism
 which is manifesting itself in the form of a monopoly of the
 Internet, a monopoly of the Web, and a monopoly of the
-monospaced font. [2](../static/index.html#Tables)
+monospaced font. [2](./index.html#Tables)
 
 <hr>
 
